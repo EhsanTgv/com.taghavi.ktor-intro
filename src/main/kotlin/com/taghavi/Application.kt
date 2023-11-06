@@ -12,19 +12,8 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     routing {
-        get("/") {
-            call.respondText("Hello Ktor", ContentType.Text.Plain)
-        }
-
-        post("/") {
-            val post = call.receive<String>()
-            call.respondText("Received \"$post\" from the post body", ContentType.Text.Plain)
-        }
-
-        get("/users") {
-            call.respondText(userData)
-        }
+        this.root()
+        this.rootPost()
+        this.users()
     }
 }
-
-private val userData = "{ \"users\": [\"Nate\", \"Megan\", \"John\"] }"
